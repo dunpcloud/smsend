@@ -34,4 +34,4 @@ Se non hai ancora un account Smsend, puoi crearne uno gratuitamente sul sito [sm
 Le credenziali inserite saranno utilizzate per l'autenticazione al servizio di Smsend durante l'invio degli SMS.
 
 ## Licenza
-Il pacchetto è rilasciato sotto licenza MIT. Vedi il file [License File](LICENSE.md) per ulteriori dettagli.
+Il pacchetto è rilasciato sotto licenza MIT. Vedi il [File Licenza](LICENSE.md) per ulteriori dettagli.
