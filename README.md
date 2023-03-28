@@ -33,5 +33,41 @@ Se non hai ancora un account Smsend, puoi crearne uno gratuitamente sul sito [sm
 
 Le credenziali inserite saranno utilizzate per l'autenticazione al servizio di Smsend durante l'invio degli SMS.
 
+## Utilizzo
+Il pacchetto Smsend offre due tipologie di SMS: testo normale e parametrizzato.\
+Nel primo caso, il messaggio di testo è costante per tutti i destinatari, mentre nel secondo caso è possibile personalizzarlo utilizzando delle variabili parametriche.
+
+Ci sono tre modi per inviare sms tramite il pacchetto Smsend:
+
+### Notifiche preimpostate
+Il primo metodo di utilizzo è rappresentato dalle notifiche preimpostate, quattro classi già pronte all'uso: SingleSmsendNotification, SingleParamSmsendNotification, MultiSmsendNotification e MultiParamSmsendNotification.\
+È sufficiente estenderle per utilizzarle, impostando il messaggio di invio con il metodo setContentMessage().
+
+Esempio:
+```
+namespace App\Notifications;
+
+use Dunp\Smsend\Notifications\SingleSmsendNotification;
+
+class MiaNotificaSingola extends SingleSmsendNotification
+{
+	public function setContentMessage(): string
+	{
+		return 'Questo è un messaggio di prova singolo.';
+	}
+}
+```
+
+tre modi per l'invio di messaggi tramite il servizio di SMS di smsend.it:
+* Il primo è rappresentato dalle **notifiche preimpostate**, quattro classi già pronte all'uso: SingleSmsendNotification, SingleParamSmsendNotification, MultiSmsendNotification, MultiParamSmsendNotification.\
+Per utilizzarle, è sufficiente estenderle e impostare il contenuto del messaggio con il metodo setContentMessage().
+
+* Il secondo metodo consiste nell'estendere la classe SmsendNotification per creare una propria notifica personalizzata.
+
+* Il terzo metodo, infine, permette di utilizzare la classe Smsend al di fuori delle notifiche di Laravel.
+
+### Notifiche preimpostate
+
+
 ## Licenza
 Il pacchetto è rilasciato sotto licenza MIT. Vedi il [File Licenza](LICENSE.md) per ulteriori dettagli.
