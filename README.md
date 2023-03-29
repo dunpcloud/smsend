@@ -93,7 +93,6 @@ class User
     ...
 
 }
-
 ```
 
 Inoltre, se necessario, è possibile personalizzare la colonna del numero di telefono utilizzata da una notifica specifica attraverso il metodo setColumnNumber(), che va inserito nella classe della notifica. In questo modo è possibile effettuare un override all'impostazione globale contenuta nel file di configurazione smsend.php.
