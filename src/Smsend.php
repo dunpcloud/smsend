@@ -29,31 +29,31 @@ class Smsend
         $this->client = $client;
     }
 	
-	/**
+    /**
      * Invia un messaggio utilizzando l'API di Smsend.
      *
      * @param SmsendMessage $message
      * @return bool Ritorna true se il messaggio è stato inviato con successo, false altrimenti.
      * @throws \Exception
      */
-	public function sendMessage(SmsendMessage $message): bool
-	{
-		try {
-			$payload = $message->toPayload();
-			$url = $message->getUrl();
+    public function sendMessage(SmsendMessage $message): bool
+    {
+        try {
+            $payload = $message->toPayload();
+            $url = $message->getUrl();
 
-			$response = $this->client->post($url, [
-				'headers' => [
-					'Content-type' => 'application/json',
-					'user_key' => $this->userKey,
-					'Session_key' => $this->sessionKey,
-				],
-				'json' => $payload
-			]);
+            $response = $this->client->post($url, [
+                'headers' => [
+                    'Content-type' => 'application/json',
+                    'user_key' => $this->userKey,
+                    'Session_key' => $this->sessionKey,
+                ],
+                'json' => $payload
+            ]);
 
-			return $response->getStatusCode() == 201;
-		} catch (\Exception $e) {
-			throw new \Exception('Errore durante l\'invio del messaggio: ' . $e->getMessage());
-		}
-	}
+            return $response->getStatusCode() == 201;
+        } catch (\Exception $e) {
+            throw new \Exception('Errore durante l\'invio del messaggio: ' . $e->getMessage());
+        }
+    }
 }
