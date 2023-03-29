@@ -14,7 +14,7 @@ class SingleSmsendNotification extends SmsendNotification
      */
     public function toSms($notifiable): SmsendMessage
     {
-		return $this->message
-		    ->to($notifiable);
+        return $this->message
+            ->to($notifiable);
     }
 }
