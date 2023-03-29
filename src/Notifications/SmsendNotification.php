@@ -25,15 +25,15 @@ abstract class SmsendNotification extends Notification
     {
         $this->message = new SmsendMessage();
 		
-		if($this->setColumnNumber() != '') {
-			$this->message->setColumn($this->setColumnNumber());
-		}
+        if($this->setColumnNumber() != '') {
+            $this->message->setColumn($this->setColumnNumber());
+        }
         
         if (isset($params['content'])) {
             $this->message->content($params['content']);
         } elseif($this->setContentMessage() != '') {
-			$this->message->content($this->setContentMessage());
-		}
+            $this->message->content($this->setContentMessage());
+        }
         
         if (isset($params['quality'])) {
             $this->message->quality($params['quality']);
@@ -67,7 +67,7 @@ abstract class SmsendNotification extends Notification
      */
     abstract public function toSms($notifiable): SmsendMessage;
 	
-	/**
+    /**
      * Restituisce il numero della colonna da cui estrarre il numero del destinatario.
      *
      * @return string
@@ -87,4 +87,3 @@ abstract class SmsendNotification extends Notification
         return '';
     }
 }
-
