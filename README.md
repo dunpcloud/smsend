@@ -71,11 +71,45 @@ Le credenziali inserite saranno utilizzate per l'autenticazione al servizio di S
 Il pacchetto Smsend offre due tipologie di SMS: testo normale e parametrizzato.\
 Nel primo caso, il messaggio di testo è costante per tutti i destinatari, mentre nel secondo caso è possibile personalizzarlo utilizzando delle variabili parametriche.
 
-Ci sono tre modi per inviare sms tramite il pacchetto Smsend:
-
 ### Notifiche preimpostate
 Il primo metodo di utilizzo è rappresentato dalle notifiche preimpostate che sfruttano il servizio di notifiche di Laravel, quattro classi già pronte all'uso: SingleSmsendNotification, SingleParamSmsendNotification, MultiSmsendNotification e MultiParamSmsendNotification.\
 È sufficiente estenderle per utilizzarle, impostando il messaggio di invio con il metodo setContentMessage().
+Se necessario è possibile personalizzare per un tipo di notifica specifica la colonna del numero di telefono attraverso il metodo setColumnNumber() da inseririre nella classe della vostra notifica.
+```
+namespace Dunp\Smsend\Notifications;
+
+use Dunp\Smsend\SmsendMessage;
+
+class LaMiaNotifica extends SmsendNotification
+{
+...
+    public function setColumnNumber(): string
+    {
+        return 'numero_telefono';
+    }
+...
+}
+```
+Questa modifica effettuerà un override all'impostazione globale soltanto per questa notifica, se si vuole modificare l'impostazione a livello globale è necessario modificare il valore 'default_column' nel file smsend.php.
+
+Ricordiamo che per utilizzare il sistema di notifiche di Laravel è necessario inserire il tratto "Notifiable" nel Model sul quale verranno utilizzate le notifiche.
+
+Nei nostri esempi applicheremo le notifiche al Model User, quindi per adattarlo dovremo aggiungere il seguente codice:
+
+```
+namespace App\Models;
+...
+use Illuminate\Notifications\Notifiable;
+...
+class User
+{
+    use Notifiable;
+    
+    ...
+
+}
+
+```
 
 #### Invio singolo
 Create un file chiamandolo per esempio SingleSmsNotification.php nel percorso app\Notifications.
@@ -86,10 +120,10 @@ use Dunp\Smsend\Notifications\SingleSmsendNotification;
 
 class SingleSmsNotification extends SingleSmsendNotification
 {
-	public function setContentMessage(): string
-	{
-		return 'Questo è un messaggio di prova singolo.';
-	}
+   public function setContentMessage(): string
+   {
+       return 'Questo è un messaggio di prova singolo.';
+   }
 }
 ```
 Nel vostro controller inserite il seguente codice per inviare la notifica ad un utente specifico.
@@ -106,10 +140,10 @@ use Dunp\Smsend\Notifications\MultiSmsendNotification;
 
 class MultiSmsNotification extends MultiSmsendNotification
 {
-	public function setContentMessage(): string
-	{
-		return 'Questo è un messaggio di prova multiplo.';
-	}
+   public function setContentMessage(): string
+   {
+       return 'Questo è un messaggio di prova multiplo.';
+   }
 }
 ```
 A differenza dell'invio singolo la classe MultiSmsendNotification si aspetta una collection in modo da impostare un'invio a più utenti attraverso un'unica richiesta http alle api di Smsend.
@@ -128,13 +162,13 @@ use Dunp\Smsend\Notifications\SingleParamSmsendNotification;
 
 class SingleParamSmsNotification extends SingleParamSmsendNotification
 {
-	public function setContentMessage(): string
-	{
-		return 'Ciao ${name}, questo un messaggio di prova singolo.';
-	}
+   public function setContentMessage(): string
+   {
+       return 'Ciao ${name}, questo un messaggio di prova singolo.';
+   }
 }
 ```
-Sarà importante che la variabile inserita nel messaggio sia contenuta nell'oggetto User, nel nosstro esempio è $user->name.
+Sarà importante che la variabile inserita nel messaggio sia contenuta nell'oggetto User, nel nostro esempio è $user->name.
 Nel vostro controller inserite il seguente codice per inviare la notifica ad un utente specifico.
 ```
 $user = User::find(1);
@@ -148,19 +182,44 @@ use Dunp\Smsend\Notifications\MultiParamSmsendNotification;
 
 class MultiParamSmsNotification extends MultiParamSmsendNotification
 {
-	public function setContentMessage(): string
-	{
-		return 'Ciao ${name}, questo un messaggio di prova multiplo.';
-	}
+   public function setContentMessage(): string
+   {
+       return 'Ciao ${name}, questo un messaggio di prova multiplo.';
+   }
 }
 ```
-Il codice da inserire nel vostro controller è uguale a quella dell'invio multiplo senza parametri, con l'unica differenza della notifica utilizzata
+Il codice da inserire nel vostro controller è uguale a quella dell'invio multiplo senza parametri, con l'unica differenza della classe della notifica utilizzata.
 ```
 $users = User::all();
 Notification::send(null, new MultiParamSmsNotification($users));
 ```
 
-tre modi per l'invio di messaggi tramite il servizio di SMS di smsend.it:
+### Notifiche personalizzate
+Se le notifiche preimpostate non dovessero essere sufficienti per le necessità del tuo progetto, puoi creare la tua notifica personalizzata.
+Per iniziare sarà sufficiente estendere la classe SmsendNotification ed impostare il metodo toSms().
+```
+namespace Dunp\Smsend\Notifications;
+
+use Dunp\Smsend\SmsendMessage;
+
+class SingleSmsendNotification extends SmsendNotification
+{
+    /**
+     * Crea il messaggio Smsend da inviare per la notifica.
+     *
+     * @param mixed $notifiable Oggetto notificabile.
+     * @return SmsendMessage
+     */
+    public function toSms($notifiable): SmsendMessage
+    {
+        return $this->message
+	    ->to($notifiable);
+    }
+}
+```
+
+
+
 * Il primo è rappresentato dalle **notifiche preimpostate**, quattro classi già pronte all'uso: SingleSmsendNotification, SingleParamSmsendNotification, MultiSmsendNotification, MultiParamSmsendNotification.\
 Per utilizzarle, è sufficiente estenderle e impostare il contenuto del messaggio con il metodo setContentMessage().
 
