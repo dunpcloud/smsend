@@ -69,7 +69,7 @@ SMSEND_PASSWORD=tua_password
 ```
 
 Sostituisci "tuo_username" con il tuo nome utente Smsend e "tua_password" con la tua password Smsend.\
-Se non hai ancora un account Smsend, puoi crearne uno gratuitamente sul sito [smsend.it](https://www.smsend.it/).
+Se non hai ancora un account Smsend, puoi crearne uno gratuitamente sul sito [smsend.it](https://www.smsend.it/){:target="_blank" rel="noopener"}.
 
 Le credenziali inserite saranno utilizzate per l'autenticazione al servizio di Smsend durante l'invio degli SMS.
 
@@ -383,4 +383,4 @@ Notification::send($users, new SingleSmsendNotification());
 Questa soluzione non è molto conveniente perché per ogni invio viene effettuata una richiesta HTTP alle API di Smsend, mentre per l'invio multiplo descritto in precedenza viene effettuata una singola richiesta HTTP, riducendo così il carico di lavoro del server.
 
 ## Licenza
-Il pacchetto è rilasciato sotto licenza MIT. Vedi il [File Licenza](LICENSE.md) per ulteriori dettagli.
+Il pacchetto è rilasciato sotto licenza MIT. Vedi il [File Licenza](LICENSE.md){:target="_blank" rel="noopener"} per ulteriori dettagli.
