@@ -70,5 +70,4 @@ class SmsendAuth
             throw new \Exception('Errore durante l\'autenticazione con SMSend.it: ' . $e->getMessage());
         }
     }
-
 }
