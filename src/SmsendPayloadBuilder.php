@@ -105,34 +105,34 @@ class SmsendPayloadBuilder
         return $this;
     }
 	
-	/**
-	 * Converte l'array dei destinatari in un oggetto stdClass.
-	 *
-	 * @param array $recipients L'array dei destinatari.
-	 * @return object L'oggetto stdClass dei destinatari.
-	 */
-	private function toObjectRecipients(array $recipients): object 
-	{
-		$json_recipients = new \stdClass;
+    /**
+     * Converte l'array dei destinatari in un oggetto stdClass.
+     *
+     * @param array $recipients L'array dei destinatari.
+     * @return object L'oggetto stdClass dei destinatari.
+     */
+    private function toObjectRecipients(array $recipients): object 
+    {
+        $json_recipients = new \stdClass;
 
-		foreach($recipients as $key => $recipient) {
-			$json_recipients->{$key} = $recipient;
-		}
-		
-		return $json_recipients;
-	}
+        foreach($recipients as $key => $recipient) {
+            $json_recipients->{$key} = $recipient;
+        }
+        
+        return $json_recipients;
+    }
 
-	/**
-	 * Restituisce il payload del messaggio costruito dal builder.
-	 *
-	 * @return array Il payload del messaggio.
-	 */
-	public function build(): array
-	{
-		if(isset($this->payload['recipients'])) {
-			$this->payload['recipients'] = $this->toObjectRecipients($this->payload['recipients']);
-		}
+    /**
+     * Restituisce il payload del messaggio costruito dal builder.
+     *
+     * @return array Il payload del messaggio.
+     */
+    public function build(): array
+    {
+        if(isset($this->payload['recipients'])) {
+            $this->payload['recipients'] = $this->toObjectRecipients($this->payload['recipients']);
+        }
 
-		return $this->payload;
-	}
+        return $this->payload;
+    }
 }
