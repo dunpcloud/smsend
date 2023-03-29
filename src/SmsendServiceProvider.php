@@ -21,11 +21,11 @@ class SmsendServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/smsend.php', 'smsend');
     }
 
-	/**
-	 * Registra il servizio Smsend come singleton e si occupa di effettuare l'autenticazione dell'utente.
-	 *
-	 * @return void
-	 */
+    /**
+    * Registra il servizio Smsend come singleton e si occupa di effettuare l'autenticazione dell'utente.
+    *
+    * @return void
+    */
     public function register()
     {
         // Registra il service Smsend come singleton
