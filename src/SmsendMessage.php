@@ -92,13 +92,13 @@ class SmsendMessage
      * @return $this
      */
     public function multiToParametric(Collection $recipients): SmsendMessage
-	{
-		foreach($recipients as $recipient) {
-			$this->toParametric($recipient);
-		}
-		
-		return $this;
-	}
+    {
+        foreach($recipients as $recipient) {
+            $this->toParametric($recipient);
+        }
+
+        return $this;
+    }
 
     /**
      * Imposta il contenuto del messaggio
@@ -108,9 +108,9 @@ class SmsendMessage
      */
     public function content(string $message): SmsendMessage
     {
-		preg_match_all('/\{([^\}]+)\}/', $message, $matches);
+        preg_match_all('/\{([^\}]+)\}/', $message, $matches);
         $this->params = $matches[1];
-		$this->url = !empty($this->params) ? 'paramsms' : 'sms';
+        $this->url = !empty($this->params) ? 'paramsms' : 'sms';
         $this->payloadBuilder->setMessage($message);
 		
         return $this;
@@ -180,4 +180,3 @@ class SmsendMessage
         $this->columnNumber = $columnNumber;
     }
 }
-
