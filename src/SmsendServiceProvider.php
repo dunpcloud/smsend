@@ -17,8 +17,10 @@ class SmsendServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Merge del file di configurazione del package nella configurazione del progetto
-        $this->mergeConfigFrom(__DIR__.'/../config/smsend.php', 'smsend');
+        // Pubblica il file di configurazione nella directory di configurazione del progetto
+        $this->publishes([
+            __DIR__.'/../config/smsend.php' => config_path('smsend.php'),
+        ], 'config');
     }
 
     /**
