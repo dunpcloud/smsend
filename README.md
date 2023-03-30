@@ -1,7 +1,7 @@
-# Package Smsend Laravel2
+# Package Smsend Laravel
 Smsend è un pacchetto Laravel progettato per semplificare l'invio di SMS attraverso il provider italiano smsend.it. Grazie a questo pacchetto, gli sviluppatori possono facilmente integrare l'invio di messaggi SMS nelle loro applicazioni Laravel con poche righe di codice.
 
-## Compatibilità
+## Compatibilità2
 Il pacchetto è compatibile con le versioni 9.x e 10.x di Laravel.
 
 ## Installazione e configurazione
