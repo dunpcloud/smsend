@@ -1,0 +1,27 @@
+{
+    "name": "dunp/smsend-laravel",
+    "description": "Un pacchetto che fornisce una libreria per l'invio di SMS utilizzando l'API di Smsend.it. Il pacchetto è progettato per semplificare l'integrazione dell'invio di SMS nelle applicazioni Laravel.",
+    "type": "laravel-package",
+    "require": {
+        "guzzlehttp/guzzle": "^7.2"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Dunp\\Smsend\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "dunp scpl"
+        }
+    ],
+    "minimum-stability": "stable",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Dunp\\Smsend\\SmsendServiceProvider"
+            ]
+        }
+    }
+}
