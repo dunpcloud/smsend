@@ -10,7 +10,7 @@ Per installare e configurare il pacchetto Smsend Laravel, segui i seguenti passa
 ### Installazione tramite Composer
 Per installare il pacchetto, utilizza Composer eseguendo il comando:
 
-`composer require dunp/smsend`
+`composer require dunp/smsend-laravel`
 
 ### Registrazione del service provider
 Dopo aver installato il pacchetto, è necessario registrare il service provider in Laravel. Verifica se il provider è già presente nel file config/app.php sotto la voce "providers". In caso contrario, aggiungi il seguente provider alla lista dei provider:
