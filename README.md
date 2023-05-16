@@ -5,7 +5,7 @@ Smsend è un pacchetto Laravel progettato per semplificare l'invio di SMS attrav
 Il pacchetto è compatibile con le versioni 9.x e 10.x di Laravel.
 
 ## Installazione e configurazione
-Per installare e configurare il pacchetto Smsend Laravel, segui i seguenti passaggi.
+Per installare e configurare il pacchetto SmSend Laravel, segui i seguenti passaggi.
 
 ### Installazione tramite Composer
 Per installare il pacchetto, utilizza Composer eseguendo il comando:
@@ -40,7 +40,7 @@ Nel file di configurazione sarà possibile modificare le seguenti impostazioni:
     <tr>
       <td>timeout</td>
       <td>5</td>
-      <td>Tempo massimo in secondi per la connessione all'API di SMSend</td>
+      <td>Tempo massimo in secondi per la connessione all'API di SmSend</td>
     </tr>
     <tr>
       <td>default_column</td>
@@ -55,23 +55,23 @@ Nel file di configurazione sarà possibile modificare le seguenti impostazioni:
     <tr>
       <td>sender</td>
       <td>vuoto</td>
-      <td>Mittente di default per i messaggi (lasciare vuoto per utilizzare quello impostato da SMSend)</td>
+      <td>Mittente di default per i messaggi (lasciare vuoto per utilizzare quello impostato da SmSend)</td>
     </tr>
   </tbody>
 </table>
 
 ### Inserimento delle credenziali
-Per utilizzare il pacchetto Smsend, è necessario inserire le credenziali del tuo account Smsend nel file .env del tuo progetto. Apri il file .env e aggiungi le seguenti righe:
+Per utilizzare il pacchetto Smsend, è necessario inserire le credenziali del tuo account SmSend nel file .env del tuo progetto. Apri il file .env e aggiungi le seguenti righe:
 
 ```
 SMSEND_USERNAME=tuo_username
 SMSEND_PASSWORD=tua_password
 ```
 
-Sostituisci "tuo_username" con il tuo nome utente Smsend e "tua_password" con la tua password Smsend.\
-Se non hai ancora un account Smsend, puoi crearne uno gratuitamente sul sito [smsend.it](https://www.smsend.it/).
+Sostituisci "tuo_username" con il tuo nome utente SmSend e "tua_password" con la tua password Smsend.\
+Se non hai ancora un account SmSend, puoi crearne uno gratuitamente sul sito [smsend.it](https://www.smsend.it/).
 
-Le credenziali inserite saranno utilizzate per l'autenticazione al servizio di Smsend durante l'invio degli SMS.
+Le credenziali inserite saranno utilizzate per l'autenticazione al servizio di SmSend durante l'invio degli SMS.
 
 ## Utilizzo
 Il pacchetto Smsend offre due tipologie di SMS: testo normale e parametrizzato.\
