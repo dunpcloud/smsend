@@ -61,13 +61,15 @@ Nel file di configurazione sarà possibile modificare le seguenti impostazioni:
 </table>
 
 ### Inserimento delle credenziali
-Per utilizzare il pacchetto Smsend, è necessario inserire le credenziali del tuo account SmSend nel file .env del tuo progetto. Apri il file .env e aggiungi le seguenti righe:
+Per utilizzare il pacchetto Smsend, è necessario inserire le credenziali del tuo account SmSend e una chiave segreta nel file .env del tuo progetto. Apri il file .env e aggiungi le seguenti righe:
 
 ```
 SMSEND_USERNAME=tuo_username
 SMSEND_PASSWORD=tua_password
+SMSEND_SECRET_KEY=base64:chiave_segreta 
 ```
 
+Sostituisci "chiave_segreta" con una chiave segreta a tua scelta.\
 Sostituisci "tuo_username" con il tuo nome utente SmSend e "tua_password" con la tua password Smsend.\
 Se non hai ancora un account SmSend, puoi crearne uno gratuitamente sul sito [smsend.it](https://www.smsend.it/).
 
