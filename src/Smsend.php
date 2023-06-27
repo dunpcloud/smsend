@@ -41,7 +41,7 @@ class Smsend
         try {
             $payload = $message->toPayload();
             $url = $message->getUrl();
-
+			
             $response = $this->client->post($url, [
                 'headers' => [
                     'Content-type' => 'application/json',
@@ -50,7 +50,7 @@ class Smsend
                 ],
                 'json' => $payload
             ]);
-
+			
             return $response->getStatusCode() == 201;
         } catch (\Exception $e) {
             throw new \Exception('Errore durante l\'invio del messaggio: ' . $e->getMessage());
