@@ -7,7 +7,11 @@ return [
     'username' => env('SMSEND_USERNAME'),
     // Password per l'autenticazione con l'API di SMSend (prelevata dall'ambiente)
     'password' => env('SMSEND_PASSWORD'),
-    // Tempo massimo in secondi per la connessione all'API di SMSend
+	// Secret Key
+	'secret_key' => env('SMSEND_SECRET_KEY'),
+	// Scadenza JWT espressa in secondi
+	'expiration_jwt' => 3600,
+	// Tempo massimo in secondi per la connessione all'API di SMSend
     'timeout' => 5,
     // Colonna di default per l'inserimento dei numeri di telefono dei destinatari
     'default_column' => 'phone_number',
